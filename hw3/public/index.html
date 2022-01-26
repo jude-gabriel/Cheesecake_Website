@@ -1,0 +1,126 @@
+<!-------------------------------------------------
+HTML file for the cheesecake site
+
+Now supports JQuery for the order form and month
+dropdown form. (1/18)
+
+Author: Jude Gabriel
+Date: January 19, 2022 
+-------------------------------------------------->
+
+<!DOCTYPE html>
+<html>
+
+<!-- Header information, CSS & JQuery linking -->
+<head>
+    <title>Cheesecake Order Form</title>
+    <link href="stylesheets/gabriel23.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+</head>
+
+<!-- Body of the webpage -->
+<body>
+
+    <!-- Site Title -->
+    <h1>Cheesecake Order Form</h1>
+
+    <!-- Cheescake Image  -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" 
+            alt="Cheesecake with Strawberry Sauce" width="150" height="150"><br>
+
+    <!-- Form with dropdown, radio buttons, and notes textarea -->
+    <form id="userform" action="order">
+
+        <!-- Table with title, dropdown and radio buttons -->
+        <table class="center-table">
+            Quantity Topping</br>
+            <tr>
+                <td>
+                    <select name="quantity" id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                </td>
+                <td width="15"></td>
+                <td>
+                    <input type="radio" id="plain" name="topping" value="plain">
+                    <label for="plain">Plain</label><br>
+                    <input type="radio" id="cherry" name="topping" value="cherry">
+                    <label for="cherry">Cherry</label><br>
+                    <input type="radio" id="chocolate" name="topping" value="chocolate">
+                    <label for="chocolate">Chocolate</label>
+                </td>
+            </tr>
+        </table>
+        <!-- End of Table -->
+
+        <!-- Textarea for additional notes -->
+        <div class="notes-area">
+            <div class="left-align">
+                <label id="notes-text" for="notes">Notes:</label><br>
+            </div>
+            <textarea id="notes" name="notes" placeholder="Enter any special instructions here." 
+                rows="4" cols="45"></textarea><br><br>
+            <input class="button" type="button" id="order" value="Order"><br>
+        </div>
+        <!-- End of textarea for notes -->
+
+    </form>
+    <!-- End of form -->
+
+    <!---------------------------------------------------------------------------- 
+    Total Orders Last Month bulleted list 
+    Source for creating a dropdown list:
+    https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover
+    -------------------------------------------------------------------------------->
+    <div class="bottom-page">
+        <h3>Orders for 
+        <div class="dropdown">
+            <button id="dropdown" class="dropbtn">Jan</button>
+            <div id="drop-list" class="dropdown-content">
+              <a id="jan">Jan</a>
+              <a id="feb">Feb</a>
+              <a id="mar">Mar</a>
+              <a id="apr">Apr</a>
+              <a id="may">May</a>
+              <a id="jun">Jun</a>
+              <a id="jul">Jul</a>
+              <a id="aug">Aug</a>
+              <a id="sep">Sep</a>
+              <a id="oct">Oct</a>
+              <a id="nov">Nov</a>
+              <a id="dec">Dec</a>
+            </div>
+          </div>
+        </h3>
+        <div class="center-list">
+            <ul>
+                <li>11 cherry</li>
+                <li>17 chocolate</li>
+                <li>31 plain</li>
+            </ul>
+        </div>
+    </div>
+    <!-- End of total orders bulleted list -->
+
+
+    <!-------------------------------------------------------------------
+    SCRIPTS
+
+    All javascript and jquery were learned with the following sources:
+    https://www.w3schools.com/jsref/default.asp
+    https://www.w3schools.com/jquery/default.asp 
+    --------------------------------------------------------------------->
+    <script src="javascripts/cheesecake_scripts.js"></script>
+    <!-- End of Scripts -->
+
+</body>
+<!-- End body of webpage -->
+
+</html>
+<!-- End of Document  -->

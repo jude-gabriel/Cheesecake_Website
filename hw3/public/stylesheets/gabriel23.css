@@ -1,0 +1,230 @@
+/******************************************************************************
+Defines the styles for the cheescake site
+Added: Support for a hover dropdown list (1/18)
+
+Author: Jude Gabriel
+Date: January 19, 2022
+
+Outside source for transitions on hover:
+https://www.tutorialrepublic.com/faq/how-to-change-image-on-hover-with-css.php
+******************************************************************************/
+
+/* Global Styles */
+*{
+    margin: 0;
+}
+
+/* Styles for the body of the site */
+body{
+    background-color: #e2dbce;
+    text-align: center;
+    font-family: arial, sans-serif;
+}
+
+/* Header styles, changes font size and centering on page */
+h1{
+    background-color: #FE6D73;
+    padding: 8%;
+    text-align: center;
+    margin-bottom: 5%;
+    text-decoration: underline;
+    font-weight: bolder;
+    font-size: 300%;
+    font-family: 'Times New Roman', Times, serif;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+
+/* Reaction for the header on hover */
+h1:hover{
+    font-size: 400%;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+
+/* Image styles: changes size and border */
+img{
+    border-radius: 8px;
+    height: auto;
+    width: 75%;
+    margin-bottom: 5%;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+
+/* 
+Reacts to image hover, changes filters.
+Outside source for adding a shadow:
+https://www.tutorialspoint.com/adding-drop-shadow-to-images-using-css3 
+*/
+img:hover{
+    filter: drop-shadow(20px 20px 20px black) sepia(50%);
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+
+/* Styles for toppings and notes from */
+form{
+    background-color: #6F8AB7;
+    margin-bottom: 5%;
+    padding: 5%;
+    text-align: center;
+    font-size: 200%;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+
+/* Changes the size of the select button */
+select{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 80%;
+}
+
+/* Makes the form pop when hovered over */
+form:hover{
+    font-size: 250%;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+
+/* Centers all table elements */
+.center-table{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* Increases margin around the notes area */
+.notes-area{
+    margin: 5%;
+}
+
+/* Left-aligns text over the textarea */
+.left-align{
+    list-style-position: inside;
+    text-align: left;
+    margin: 0 auto;
+    width: 365px;
+}
+
+/* Change the color of the textarea */
+textarea{
+    background-color: #e2dbce;
+}
+
+/* Button Styles, changes font and size */
+.button{
+    font-weight: bold;
+    font-size: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #e2dbce;
+    padding: 1%;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+    border: none;
+}
+
+/* Styles for button transition on hover */
+.button:hover{
+    background-color: #FE6D73;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+
+/* Style for the "Totals Orders Last Month" section */
+h3{
+    font-weight: bold;
+    font-style: oblique;
+}
+
+/* Styles for total orders including list */
+.bottom-page{
+    font-family: arial, sans-serif;
+    background-color: #FFCB77;
+    padding: 5%;
+    margin: 5%;
+    font-weight: lighter;
+    font-style: oblique;
+    font-size: 150%;
+    border-radius: 100%;
+    text-align: center;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+
+/* Styles for bottom of page transition on hover */
+.bottom-page:hover{
+    margin: 1%;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+    padding: 5%;
+    font-size: 200%;
+}
+
+/* 
+Styles for centering the bulleted list on the page.
+Outside source used to help center list: 
+https://stackoverflow.com/questions/5347833/centering-bullets-on-a-centered-list 
+*/
+.center-list{
+    list-style-position: inside;
+    text-align: left;
+    margin: 0 auto;
+    width: 265px;
+    padding-left: 5%;
+}
+
+
+/****************************************************************************
+Styles for drop down list that is scrollable
+
+Sources for creating a drop down list that scrolls:
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover
+https://stackoverflow.com/questions/21983819/making-a-drop-down-menu-scrollable 
+*****************************************************************************/
+
+/* Styles for dropdown button */
+.dropbtn {
+    font-weight: bold;
+    font-style: oblique;
+    font-family: arial, sans-serif;
+    background-color: #e2dbce;
+    font-size: 105%;
+    border: none;
+}
+
+/*  Defines position for dropdown list */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Styles for content in drop down list */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #496594;
+    min-width: 125%;
+    max-height: 300%;
+    overflow:auto;
+}
+
+/* Styles for the months in the drowpdown list */
+.dropdown-content a {
+    padding: 15%;
+    display: block;
+    font-size: 50%;
+}
+
+/* Changes background color of the month being hovered over */
+.dropdown-content a:hover {background-color: #e2dbce;}
+
+/* Displays the dropdown list when the button is hovered over */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Changes the color of the button when hovered */
+.dropdown:hover .dropbtn {background-color: #6F8AB7;}
+
+
