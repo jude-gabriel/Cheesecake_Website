@@ -15,6 +15,35 @@ var isAppended = false;
 
 
 /**
+ * Event Handler for when the document is ready
+ * 
+ * Allows scripts to be called
+ */
+ documentReady = function()
+ {
+     //Call the event handler for when the month drop down was clicked
+     $(function(){
+         $(".dropdown-content a").click(monthHandler);
+     });
+ 
+     //Call the event handler for when the order button was clicked
+     $(function(){
+         $("#order").click(orderHandler);
+     });
+ }
+ 
+ 
+ /**
+  * Called when the document is ready. Allows scripts to be ran 
+  * only if page is loaded. 
+  */
+ $(function()
+ {
+     $(document).ready(documentReady);
+ });
+
+
+/**
  * Event Handler for the change in the month 
  * 
  * Allows a user to select a month from the drop down list
@@ -107,32 +136,3 @@ orderHandler = function()
          }
      }
 }
-
-
-/**
- * Event Handler for when the document is ready
- * 
- * Allows scripts to be called
- */
-documentReady = function()
-{
-    //Call the event handler for when the month drop down was clicked
-    $(function(){
-        $(".dropdown-content a").click(monthHandler);
-    });
-
-    //Call the event handler for when the order button was clicked
-    $(function(){
-        $("#order").click(orderHandler);
-    });
-}
-
-
-/**
- * Called when the document is ready. Allows scripts to be ran 
- * only if page is loaded. 
- */
-$(function()
-{
-    $(document).ready(documentReady);
-});
