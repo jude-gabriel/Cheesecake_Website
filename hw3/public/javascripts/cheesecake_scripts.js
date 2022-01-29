@@ -19,18 +19,14 @@ var isAppended = false;
  * 
  * Allows scripts to be called
  */
- documentReady = function()
- {
-     //Call the event handler for when the month drop down was clicked
-     $(function(){
-         $(".dropdown-content a").click(monthHandler);
-     });
+documentReady = function()
+{
+    //Call the event handler for when the month drop down was clicked
+    $(".dropdown-content a").click(monthHandler);
  
-     //Call the event handler for when the order button was clicked
-     $(function(){
-         $("#order").click(orderHandler);
-     });
- }
+    //Call the event handler for when the order button was clicked
+    $("#order").click(orderHandler);
+}
  
  
  /**

@@ -1,3 +1,10 @@
+/************************************************************
+ * Function calls to allow for app to load
+ * 
+ * Author: Jude Gabriel 
+ * Date: January 25, 2022
+ **********************************************************/
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
