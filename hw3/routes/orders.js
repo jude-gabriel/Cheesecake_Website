@@ -6,15 +6,22 @@
  ********************************/
 
 var express = require('express');
+
 var router = express.Router();
 
 
+var DATA;
+
+const dbQuery = require('./dbms.js');
+
+
+
+
 //Array of json objects with topping and quantity
-data = [
-    { 'topping' : 'cherry', 'quantity' : 2 } , 
-    { 'topping' : 'plain', 'quantity' : 6 } ,
-    { 'topping' : 'chocolate', 'quantity' : 3 }
-]
+// dbQuery.dbquery("Select * FROM ORDERS", function(err, results) {
+//   DATA = results;
+//   console.log( "HERE \n" + DATA);
+// });
 
 
 /**
@@ -22,7 +29,12 @@ data = [
  * on localhost3000/orders
  */
 router.get('/', function(req, res, next) {
-    res.json(data);
+  console.log(req);
+
+   dbQuery.dbquery("SELECT * FROM ORDERS WHERE MONTH=" + req.body.month, function(err, results){
+     DATA = results;
+   });
+    res.json(DATA);
   });
 
   
@@ -32,7 +44,8 @@ router.get('/', function(req, res, next) {
  * Respond with the correct data from the request
  */
 router.post('/', function(req, res, next) {
-    res.json(data);
+  console.log(req.body.months);
+  res.json(req.body.months);
   });
   
 

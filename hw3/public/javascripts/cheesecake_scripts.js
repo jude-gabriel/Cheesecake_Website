@@ -22,6 +22,7 @@ var isAppended = false;
  */
 documentReady = function()
 {
+    console.log("TEST");
     //Call the event handler for when the month drop down was clicked
     $(".dropdown-content a").click(monthHandler);
  
@@ -52,16 +53,19 @@ monthHandler = function()
     $("#dropdown").empty();
     $("#dropdown").append(month);
 
+    console.log(month);
+    
+
     //Request the JSON data, popoulate the bulleted list 
     //with the corresponding quantity and topping
-    $.post('/orders', function(req, res, next){
+    $.post("/orders", {month : "MAR"}, function(req, res, next){
         $('#l1').empty();
         $('#l1').append(req[0].quantity + " " + req[0].topping);
         $('#l2').empty();
         $('#l2').append(req[2].quantity + " " + req[2].topping);
         $('#l3').empty();
         $('#l3').append(req[1].quantity + " " + req[1].topping);
-    });
+    }, "json");
 }
 
 
