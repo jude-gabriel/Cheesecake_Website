@@ -46,7 +46,6 @@ exports.dbquery = function(query_str, callback) {
             });
 
             dbclient.connect(callback);
-            console.log("\n** creating connection.");
         },
 
         //Step 2: Issue query

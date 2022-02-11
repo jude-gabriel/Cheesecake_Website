@@ -22,7 +22,6 @@ var isAppended = false;
  */
 documentReady = function()
 {
-    console.log("TEST");
     //Call the event handler for when the month drop down was clicked
     $(".dropdown-content a").click(monthHandler);
  
@@ -53,20 +52,17 @@ monthHandler = function()
     $("#dropdown").empty();
     $("#dropdown").append(month);
 
-    //console.log(month);
     
 
     //Request the JSON data, popoulate the bulleted list 
     //with the corresponding quantity and topping
     $.post("/orders", {month : month}, function(req, res, next){
-        console.log("recieved");
-        console.log(req);
         $('#l1').empty();
-        $('#l1').append(req[0].quantity + " " + req[0].topping);
+        $('#l1').append(req[0].plain + " Plain");
         $('#l2').empty();
-        $('#l2').append(req[2].quantity + " " + req[2].topping);
+        $('#l2').append(req[1].chocolate + " Chocolate");
         $('#l3').empty();
-        $('#l3').append(req[1].quantity + " " + req[1].topping);
+        $('#l3').append(req[2].cherry + " Cherry");
     });
 }
 
@@ -81,7 +77,14 @@ orderHandler = function()
 {
      //Get the user's input and cast to lowercase 
      var userInput = $("#notes").val();
+     if(userInput == null){
+         userInput = " ";
+     }
      var isVegan = userInput.toLowerCase();
+
+     //Get toppoing and quantity
+     var topping;
+     var quantity
 
      //Check if the user's input contains the word vegan
      //and display error message onece
@@ -98,7 +101,6 @@ orderHandler = function()
      else
      {
          //Get the topping selected. If none are selected default to plain
-         var topping;
          if(document.getElementById("chocolate").checked == true)
          {
              topping = "Chocolate";
@@ -113,7 +115,7 @@ orderHandler = function()
          }
 
          //Get the quantity of the topping 
-         var quantity = document.getElementById("quantity").value;
+         quantity = document.getElementById("quantity").value;
 
          //Clear the user form, display thank you and order details
          $("#userform").empty();
@@ -149,4 +151,12 @@ orderHandler = function()
              }
          }
      }
+
+     //Send the order if it does not contain 'vegan'
+     if(!isVegan.includes("vegan"))
+     {
+        //Post the user's new order
+        $.post("/neworder", {quantity: quantity, topping: topping, notes: userInput}, function(req, res, next){
+        });
+    }
 }
