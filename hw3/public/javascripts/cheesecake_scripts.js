@@ -2,11 +2,12 @@
  * Scripts for the Cheesecake Website
  * 
  * ALlows a user to place an order and change the month in the 
- * dropdown menu
+ * dropdown menu. Connects to database to recieve orders and show
+ * orders per month
  * 
  * Author: Jude Gabriel
  * Date: January 25, 2022
- * Updated: February 3, 2022
+ * Updated: February 11, 2022
  ******************************************************************************/
 
 
@@ -27,6 +28,9 @@ documentReady = function()
  
     //Call the event handler for when the order button was clicked
     $("#order").click(orderHandler);
+
+    //Always post the orders for january when doc loads
+    postJanuary();
 }
  
  
@@ -52,11 +56,10 @@ monthHandler = function()
     $("#dropdown").empty();
     $("#dropdown").append(month);
 
-    
-
     //Request the JSON data, popoulate the bulleted list 
     //with the corresponding quantity and topping
-    $.post("/orders", {month : month}, function(req, res, next){
+    $.post("/orders", {month : month}, function(req, res, next)
+    {
         $('#l1').empty();
         $('#l1').append(req[0].plain + " Plain");
         $('#l2').empty();
@@ -72,12 +75,15 @@ monthHandler = function()
  * 
  * Removes the "Quantity Topping" section. Replaces it with 
  * text containing order details as well as custormer notes
+ * 
+ * Allows a user to place an order to the database
  */
 orderHandler = function()
 {
      //Get the user's input and cast to lowercase 
      var userInput = $("#notes").val();
-     if(userInput == null){
+     if(userInput == null)
+     {
          userInput = " ";
      }
      var isVegan = userInput.toLowerCase();
@@ -135,7 +141,6 @@ orderHandler = function()
          {
              $("#userform").append("Notes:<br>");
 
-             
              //If the user enters a new line, make new line in notes
              //otherwise print char to page
              for(var i = 0; i < userInput.length; i++)
@@ -156,7 +161,25 @@ orderHandler = function()
      if(!isVegan.includes("vegan"))
      {
         //Post the user's new order
-        $.post("/neworder", {quantity: quantity, topping: topping, notes: userInput}, function(req, res, next){
+        $.post("/neworder", {quantity: quantity, topping: topping, notes: userInput}, function(req, res, next)
+        {
         });
     }
+}
+
+/** 
+ * Get the orders for January
+ */
+function postJanuary()
+{
+    //Request the JSON data for january. post to bulleted list
+    $.post("/orders", {month : "Jan"}, function(req, res, next)
+    {
+        $('#l1').empty();
+        $('#l1').append(req[0].plain + " Plain");
+        $('#l2').empty();
+        $('#l2').append(req[1].chocolate + " Chocolate");
+        $('#l3').empty();
+        $('#l3').append(req[2].cherry + " Cherry");
+    });
 }

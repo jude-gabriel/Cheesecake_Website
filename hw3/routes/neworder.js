@@ -1,13 +1,12 @@
-/*********************************
+/*************************************
  * Send a new order to the database
  * 
  * Author: Jude Gabriel
  * Date: February 10, 2022
- ********************************/
+ ************************************/
 
- var express = require('express');
-const { makeArray } = require('jquery');
- var router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 
 //Import function to conenct to database
@@ -17,7 +16,8 @@ const dbQuery = require('./dbms.js');
 /**
  * Respond to the post, make a new entry for a new order
  */
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res, next) 
+{
     //Get the passed in data
     var quantity = req.body.quantity;
     var topping = req.body.topping;
@@ -27,21 +27,26 @@ router.post('/', function(req, res, next) {
     var orderid;
 
     //Find the ID of the latest entry to get the ID of the next
-    dbQuery.dbquery("SELECT * FROM ORDERS ORDER BY ORDERID DESC LIMIT 1;", function(err, results){
+    dbQuery.dbquery("SELECT * FROM ORDERS ORDER BY ORDERID DESC LIMIT 1;", function(err, results)
+    {
         orderid = results[0].ORDERID + 1;
 
         //Insert the new order into the database
         dbQuery.dbquery("INSERT INTO ORDERS VALUES(" + orderid + ", '" + month + "', " + day + ", " + quantity 
-                                + ", '" + topping + "', '" + notes + "');", function(err, feedback){
-                                });
+                                + ", '" + topping + "', '" + notes + "');", function(err, feedback)
+        {
+        });
     });
 });
 
 
 //Generate a random month and return 3-char representation
-function generateMonth(){
+function generateMonth()
+{
+    //Generate a number
     var month = Math.floor(Math.random() * (13 - 1) + 1);
 
+    //Return the corresponding month
     switch (month){
         case 1: 
             return "JAN";
@@ -77,5 +82,6 @@ function generateMonth(){
 function generateDay(){
     return Math.floor(Math.random() * (29 - 1) + 1)
 }
+
 
 module.exports = router;
